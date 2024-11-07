@@ -4,20 +4,19 @@
 #include "average.h"
 #include "mode.h"
 #include "stdDeviation.h"
-#include <stdlib.h>
-#include <stdio.h>	
+#include "maximum.h"
     
 
 int main() 
 {
-    int arr[] = {1, 3, 3, 2, 1, 4, 3, 5, 3}; // Example array
+    int arr[] = {1, 3, 3, 2, 1, 4, 3, 5, 3}; 
     int size = sizeof(arr) / sizeof(arr[0]);
     float mean, stdDeviation;
-    int mode;
+    int mode, max;
 
     int *counter = malloc(sizeof(int)); // Allocate memory for counter
     if (counter == NULL) 
-    {              // Check for successful allocation
+    {              
         fprintf(stderr, "Memory allocation failed.\n");
         return 1;
 
@@ -32,5 +31,9 @@ int main()
 
     stdDeviation = calcStdDeviation(arr, size, mean);
     printf("The standar deviation of the array is: %f\n", stdDeviation);
+
+    max = calcMax(arr, size);
+    printf("The max of the array is: %d\n", max);
+
     return 0;
 }
